@@ -7,6 +7,8 @@ require('dotenv').config();
 var cors = require('cors');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
+const authRoutes = require('./routes/authRoutes');
+
 
 //connection to MongoDB
 mongoose.connect(process.env.DATABASE, {
@@ -26,10 +28,8 @@ app.use(cors());
 
 
 //Routes middleware
-app.get("/", (req, res) => {
-    res.send("app is running");
-
-})
+//gives a 200 status code meaning successful response
+app.use("/api", authRoutes);
 
 
 
