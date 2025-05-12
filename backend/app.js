@@ -10,8 +10,8 @@ const errorHandler = require('./middleware/error');
 
 //connection to MongoDB
 mongoose.connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
 
 
 }).then(() => console.log("DB Connection successful"))
@@ -21,13 +21,13 @@ mongoose.connect(process.env.DATABASE, {
 app.use(morgan('dev'));
 app.use(bodyParser.json("limit = 5mb"));
 app.use(bodyParser.urlencoded({ extended: true, limit: '5mb' }));
-app.use(cookieParser);
+app.use(cookieParser());
 app.use(cors());
 
 
 //Routes middleware
 app.get("/", (req, res) => {
-    res.send({message: "app is running"});
+    res.send("app is running");
 
 })
 
