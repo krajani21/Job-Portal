@@ -25,12 +25,20 @@ app.use(cookieParser);
 app.use(cors());
 
 
+//Routes middleware
+app.get("/", (req, res) => {
+    res.send({message: "app is running"});
+
+})
+
+
+
 //middleware for error handling
 app.use(errorHandler);
 
 
 //port configuration
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
