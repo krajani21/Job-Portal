@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const ErrorResponse = require("../utils/errorResponse");
+const ONE_HOUR = 60 * 60 * 1000;//60 minutes * 60 seconds * 1000 milliseconds
 
 exports.signup = async (req, res, next) => {
     const {email} = req.body;
@@ -58,10 +59,19 @@ exports.signin = async(req, res, next) => {
 const sendTokenResponse = async(user, statusCode, res) => {
     const token = await user.getJwtToken();
     res.status(statusCode)
-    .cookie("token", token, {maxAge:60 * 60 * 1000, httpOnly: true})//cookie expires in 1 hour
+    .cookie("token", token, {maxAge: ONE_HOUR, httpOnly: true})//cookie expires in 1 hour
     .json({
         success: true,
         token,
         user
+    })
+}
+
+//logout feature
+exports.logout = (req, res, next) => {
+    res.clearCookie("token");
+    res.status(200).json({
+        success: true,
+        message: "Successfully logged out"
     })
 }
