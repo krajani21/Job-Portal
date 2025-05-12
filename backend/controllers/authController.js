@@ -12,7 +12,7 @@ exports.signup = async (req, res, next) => {
         return next(new ErrorResponse("Email already exists", 400));
     }
     try {
-        const user = User.create(req.body);
+        const user = await User.create(req.body);
         //201 means creates successfully, and send to the frontend
         res.status(201).json({
             success: true,
