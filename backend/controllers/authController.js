@@ -23,7 +23,4 @@ exports.signup = async (req, res, next) => {
         next(error);
         
     }
-
-
-    next();
 }
