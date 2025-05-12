@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 var cors = require('cors');
 const cookieParser = require('cookie-parser');
+const errorHandler = require('./middleware/error');
 
 //connection to MongoDB
 mongoose.connect(process.env.DATABASE, {
@@ -23,6 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '5mb' }));
 app.use(cookieParser);
 app.use(cors());
 
+
+//middleware for error handling
+app.use(errorHandler);
 
 
 //port configuration
