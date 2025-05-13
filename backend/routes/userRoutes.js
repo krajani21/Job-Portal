@@ -10,6 +10,6 @@ const router = express.Router();
 router.get("/allusers", isAuthenticated, isAdmin, allUsers);
 
 // /api/user/:id
-router.get("user/:id", isAuthenticated, singleUser);
+router.get("/user/:id", isAuthenticated, singleUser);
 
 module.exports = router;
