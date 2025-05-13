@@ -75,3 +75,14 @@ exports.logout = (req, res, next) => {
         message: "Successfully logged out"
     })
 }
+
+//user profile
+exports.userProfile = async(req, res, next) => {
+    //remove the password from the response
+    const user = await User.findById(req.user.id).select("-password")
+    //send to the frontend, the current logged in user
+    res.status(200).json({
+        success: true,
+        user
+    })
+}
