@@ -1,5 +1,5 @@
 const express = require("express");
-const { allUsers } = require("../controllers/userController");
+const { allUsers, singleUser } = require("../controllers/userController");
 const { isAuthenticated, isAdmin } = require("../middleware/auth");
 const router = express.Router();
 
@@ -8,5 +8,8 @@ const router = express.Router();
 // /api/allusers
 //isAuthenticated is between the request and the controller
 router.get("/allusers", isAuthenticated, isAdmin, allUsers);
+
+// /api/user/:id
+router.get("user/:id", isAuthenticated, singleUser);
 
 module.exports = router;
