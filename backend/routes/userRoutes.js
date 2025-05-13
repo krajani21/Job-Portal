@@ -1,5 +1,5 @@
 const express = require("express");
-const { allUsers, singleUser } = require("../controllers/userController");
+const { allUsers, singleUser, editUser } = require("../controllers/userController");
 const { isAuthenticated, isAdmin } = require("../middleware/auth");
 const router = express.Router();
 
@@ -11,5 +11,11 @@ router.get("/allusers", isAuthenticated, isAdmin, allUsers);
 
 // /api/user/:id
 router.get("/user/:id", isAuthenticated, singleUser);
+
+//editing the user
+// /api/user/:id
+router.put("/user/edit/:id", isAuthenticated, editUser);
+
+
 
 module.exports = router;
