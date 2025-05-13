@@ -22,3 +22,11 @@ exports.isAuthenticated = async(req, res, next) => {
     }
 
 }
+
+//middleware to check if the user is admin
+exports.isAdmin = (req, res, next) => {
+    if(req.user.role === 0){
+        return next(new errorResponse("access denied, you must be an admin", 401));
+    }
+    next();
+}
