@@ -1,44 +1,44 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const userSchema = new mongoose.Schema({
-    firstName: {
+const {ObjectId} = mongoose.Schema
+
+
+
+const jobSchema = new mongoose.Schema({
+
+    title: {
         type: String,
-        required: [true, "First name is required"],
+        required: [true, "title is required"],
         trim: true,
         maxLength: [32, "First name should not exceed 32 characters"],
     },
 
-    LastName: {
+    description: {
         type: String,
-        required: [true, "Last name is required"],
+        required: [true, "Description is required"],
         trim: true,
-        maxLength: [32, "Last name should not exceed 32 characters"],
     },
 
-    email: {
+    salary: {
         type: String,
-        required: [true, "email is required"],
+        required: [true, "salary is required"],
         trim: true,
-        unique: true,   
-        match:[
-            /^\w+([\.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-            "Please enter a valid email address"
-        ]
-
     },
 
-    password: {
+    location:{
         type: String,
-        required: [true, "password is required"],
-        trim: true,
-        minLength: [6, "Password should be at least 6 characters"],
     },
 
-    role: {
-        type: Number,
-        default: 0,
+    available:{
+        type: Boolean,
+        default: true,
     },
+
+    user:{
+        type: ObjectId,
+        reference: "User",
+        require: true
+    },
+
 }, { timestamps: true });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Job", jobSchema);
