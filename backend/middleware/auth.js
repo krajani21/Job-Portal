@@ -1,6 +1,6 @@
 const errorResponse = require("../utils/errorResponse");
 const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const User = require("../models/userModel");
 
 //check if the user is authenticated
 exports.isAuthenticated = async(req, res, next) => {
