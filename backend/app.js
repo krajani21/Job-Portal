@@ -7,6 +7,11 @@ require('dotenv').config();
 var cors = require('cors');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
+
+
+
+//importing routes
+const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 
@@ -30,6 +35,7 @@ app.use(cors());
 //Routes middleware
 //gives a 200 status code meaning successful response
 app.use("/api", authRoutes);
+app.use("/api", userRoutes);
 
 
 
