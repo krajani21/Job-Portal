@@ -13,6 +13,7 @@ const errorHandler = require('./middleware/error');
 //importing routes
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
+const jobTypeRoute = require("./routes/jobTypeRoute")
 
 
 //connection to MongoDB
@@ -36,6 +37,7 @@ app.use(cors());
 //gives a 200 status code meaning successful response
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
+app.use("/api", jobTypeRoute)
 
 
 
