@@ -15,6 +15,6 @@ router.get("/job/:id", singleJob);
 router.put("/job/update/:job_id", isAuthenticated, isAdmin, updateJob);
 
 // /api/jobs/show
-router.put("/jobs/show", showJobs);
+router.get("/jobs/show", showJobs);
 
 module.exports = router;
