@@ -80,7 +80,14 @@ exports.showJobs = async (req, res, next) => {
     let categ = cat !== "" ? cat : ids
 
     //display jobs by location
-    
+    // we use let because its going to be updated dynamically
+    let locations = [];
+    const jobByLocation = await Job.find({}, {location:1});//want to return only location
+    jobByLocation.forEach(val =>{
+        locations.push(val.location)
+    });
+    //display only unique locations
+
 
 
 
