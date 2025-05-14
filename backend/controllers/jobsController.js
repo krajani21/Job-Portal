@@ -87,6 +87,7 @@ exports.showJobs = async (req, res, next) => {
         locations.push(val.location)
     });
     //display only unique locations
+    let setUniqueLocation = [... new Set(locations)]
 
 
 
