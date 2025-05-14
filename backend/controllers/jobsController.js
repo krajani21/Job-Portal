@@ -2,7 +2,7 @@ const Job = require("../models/jobModels");
 const ErrorResponse = require("../utils/errorResponse");
 
 //create a job category
-exports.createJobType = async (req, res, next) => {
+exports.createJob = async (req, res, next) => {
     try {
         const job = await Job.create({
             title: req.body.jobTypeName,

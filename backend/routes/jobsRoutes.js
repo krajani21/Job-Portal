@@ -1,14 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const {createJobType, allJobsType} = require("../controllers/jobTypeController");
-const {isAuthenticated} = require("../middleware/auth")
+const {isAuthenticated} = require("../middleware/auth");
+const { createJob } = require("../controllers/jobsController");
 
 
 //job type routes
-// /api/type/create
-router.post("/type/create", isAuthenticated, createJobType);
-
-// /api/type/jobs
-router.get("/type/jobs", isAuthenticated, allJobsType)
+// /api/job/create
+router.post("/job/create", isAuthenticated, createJob);
 
 module.exports = router;

@@ -7,6 +7,7 @@ require('dotenv').config();
 var cors = require('cors');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
+const jobRoute = require("./routes/jobsRoutes")
 
 
 
@@ -37,7 +38,8 @@ app.use(cors());
 //gives a 200 status code meaning successful response
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
-app.use("/api", jobTypeRoute)
+app.use("/api", jobTypeRoute);
+app.use("/api", jobRoute);
 
 
 
