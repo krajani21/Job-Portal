@@ -1,8 +1,8 @@
 const Job = require("../models/jobModels");
-const JobType = require("../models/jobTypeModel")
+const JobType = require("../models/jobTypeModel");
 const ErrorResponse = require("../utils/errorResponse");
 
-//create a job category
+// Create a job
 exports.createJob = async (req, res, next) => {
     try {
         const job = await Job.create({
@@ -12,97 +12,96 @@ exports.createJob = async (req, res, next) => {
             location: req.body.location,
             jobType: req.body.jobType,
             user: req.user.id
-
         });
+
         res.status(201).json({
             success: true,
             job
-        })
-        
+        });
     } catch (error) {
         next(error);
-        
     }
-}
+};
 
-//show a single job
+// Show a single job
 exports.singleJob = async (req, res, next) => {
     try {
         const job = await Job.findById(req.params.id);
         res.status(200).json({
             success: true,
             job
-        })
-        
+        });
     } catch (error) {
         next(error);
-        
     }
-}
+};
 
-//update job by id
+// Update job by ID
 exports.updateJob = async (req, res, next) => {
     try {
-        const job = await Job.findByIdAndUpdate(req.params.job_id, req.body, {new: true}).populate("jobType", "jobTypeName").populate("user", "firstName lastName");
+        const job = await Job.findByIdAndUpdate(
+            req.params.job_id,
+            req.body,
+            { new: true }
+        )
+            .populate("jobType", "jobTypeName")
+            .populate("user", "firstName lastName");
+
         res.status(200).json({
             success: true,
             job
-        })
-        
+        });
     } catch (error) {
         next(error);
-        
     }
-}
+};
 
-//show all jobs
+// Show all jobs with filters and pagination
 exports.showJobs = async (req, res, next) => {
+    // Keyword search
+    const keyword = req.query.keyword
+        ? {
+              title: {
+                  $regex: req.query.keyword,
+                  $options: "i"
+              }
+          }
+        : {};
 
-    //search 
-    const keyword = req.query.keyword ? {
-        title: {
-            $regex: req.query.keyword,
-            $options: "i"
-        }
+    // Get all job type IDs
+    const jobTypeCategory = await JobType.find({}, { _id: 1 });
+    const ids = jobTypeCategory.map((cat) => cat._id);
 
-    } :{}
+    // Category filtering
+    const cat = req.query.cat;
+    const categ = cat?.trim() ? cat : ids;
 
-    //filter jobs by category
-    let ids = [];
-    const jobTypeCategory = await JobType .find({}, {_id:1}); //we want to have only ids
-    jobTypeCategory.forEach(cat =>{
-        ids.push(cat._id);
-    })
+    // Get all job locations
+    const jobByLocation = await Job.find({}, { location: 1 });
+    const locations = jobByLocation.map((val) => val.location);
+    const setUniqueLocation = [...new Set(locations)];
 
-    let cat = req.query.cat;
+    // Location filtering
+    const location = req.query.location;
+    const locationFilter = location?.trim() ? location : setUniqueLocation;
 
-    //if the query parameter which is named cat is not empty, we will have the cat, else all categories/ids
-    let categ = cat !== "" ? cat : ids
+    // Build MongoDB query filter using $in
+    const filter = {
+        ...keyword,
+        jobType: { $in: Array.isArray(categ) ? categ : [categ] },
+        location: { $in: Array.isArray(locationFilter) ? locationFilter : [locationFilter] }
+    };
 
-    //display jobs by location
-    // we use let because its going to be updated dynamically
-    let locations = [];
-    const jobByLocation = await Job.find({}, {location:1});//want to return only location
-    jobByLocation.forEach(val =>{
-        locations.push(val.location)
-    });
-    //display only unique locations
-    let setUniqueLocation = [... new Set(locations)];
-    let location = req.query.location;
-    let locationFiler = location !== "" ? location : setUniqueLocation
-
-
-
-
-    //enable pagination
+    // Pagination
     const pageSize = 5;
     const page = Number(req.query.pageNumber) || 1;
-    //const count = await Job.find({}).estimatedDocumentCount();
-    const count = await Job.find({...keyword, jobType: categ, location: locationFiler}).countDocuments();
-
 
     try {
-        const jobs = await Job.find({...keyword, jobType: categ, location: locationFiler}).skip(pageSize * (page - 1)).limit(pageSize);
+        const count = await Job.find(filter).countDocuments();
+        const jobs = await Job.find(filter)
+            .skip(pageSize * (page - 1))
+            .limit(pageSize);
+
         res.status(200).json({
             success: true,
             jobs,
@@ -110,13 +109,8 @@ exports.showJobs = async (req, res, next) => {
             pages: Math.ceil(count / pageSize),
             count,
             setUniqueLocation
-            
-        })
-        
+        });
     } catch (error) {
         next(error);
-        
     }
-}
-
-
+};
