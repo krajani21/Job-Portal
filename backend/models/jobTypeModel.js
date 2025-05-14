@@ -32,6 +32,12 @@ const jobTypeSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
     },
+    jobType: {
+        type: ObjectId,
+        ref: "JobType",
+        required: true
+
+    },
 
     user:{
         type: ObjectId,
