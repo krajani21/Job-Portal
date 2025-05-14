@@ -74,6 +74,11 @@ exports.showJobs = async (req, res, next) => {
         ids.push(cat._id);
     })
 
+    let cat = req.query.cat;
+
+    //if the query parameter which is named cat is not empty, we will have the cat, else all categories/ids
+    let categ = cat !== "" ? cat : ids
+
 
 
 
@@ -82,18 +87,18 @@ exports.showJobs = async (req, res, next) => {
     const pageSize = 5;
     const page = Number(req.query.pageNumber) || 1;
     //const count = await Job.find({}).estimatedDocumentCount();
-    const count = await Job.find({...keyword}).countDocuments();
+    const count = await Job.find({...keyword, jobType: categ}).countDocuments();
 
 
     try {
-        const jobs = await Job.find({...keyword}).skip(pageSize * (page - 1)).limit(pageSize);
+        const jobs = await Job.find({...keyword, jobType: categ}).skip(pageSize * (page - 1)).limit(pageSize);
         res.status(200).json({
             success: true,
             jobs,
             page,
             pages: Math.ceil(count / pageSize),
             count,
-            ids
+            
         })
         
     } catch (error) {
