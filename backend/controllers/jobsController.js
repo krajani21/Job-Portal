@@ -5,7 +5,7 @@ const ErrorResponse = require("../utils/errorResponse");
 exports.createJob = async (req, res, next) => {
     try {
         const job = await Job.create({
-            title: req.body.jobTypeName,
+            title: req.body.title,
             description: req.body.description,
             salary: req.body.salary,
             location: req.body.location,
