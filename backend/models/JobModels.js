@@ -5,11 +5,38 @@ const {ObjectId} = mongoose.Schema
 
 const jobSchema = new mongoose.Schema({
 
-    jobTypeName: {
+    title: {
         type: String,
-        required: [true, "Job category is required"],
+        required: [true, "title is required"],
         trim: true,
         maxLength: 70,
+    },
+
+    description: {
+        type: String,
+        required: [true, "Description is required"],
+        trim: true,
+    },
+
+    salary: {
+        type: String,
+        required: [true, "salary is required"],
+        trim: true,
+    },
+
+    location:{
+        type: String,
+    },
+
+    available:{
+        type: Boolean,
+        default: true,
+    },
+    jobType: {
+        type: ObjectId,
+        ref: "JobType",
+        required: true
+
     },
 
     user:{
@@ -20,4 +47,7 @@ const jobSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
+
+
 module.exports = mongoose.model("Job", jobSchema);
+
