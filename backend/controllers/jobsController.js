@@ -79,7 +79,8 @@ exports.showJobs = async (req, res, next) => {
     //if the query parameter which is named cat is not empty, we will have the cat, else all categories/ids
     let categ = cat !== "" ? cat : ids
 
-
+    //display jobs by location
+    
 
 
 
