@@ -57,13 +57,24 @@ exports.updateJob = async (req, res, next) => {
 //show all jobs
 exports.showJobs = async (req, res, next) => {
 
+    //search 
+    const keyword = req.query.keyword ? {
+        title: {
+            $regex: req.query.keyword,
+            $options: "i"
+        }
+
+    } :{}
+
     //enable pagination
     const pageSize = 5;
     const page = Number(req.query.pageNumber) || 1;
-    const count = await Job.find({}).estimatedDocumentCount();
+    //const count = await Job.find({}).estimatedDocumentCount();
+    const count = await Job.find({...keyword}).countDocuments();
+
 
     try {
-        const jobs = await Job.find().skip(pageSize * (page - 1)).limit(pageSize);
+        const jobs = await Job.find({...keyword}).skip(pageSize * (page - 1)).limit(pageSize);
         res.status(200).json({
             success: true,
             jobs,
