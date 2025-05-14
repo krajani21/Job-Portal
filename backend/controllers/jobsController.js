@@ -87,7 +87,7 @@ exports.showJobs = async (req, res, next) => {
         locations.push(val.location)
     });
     //display only unique locations
-    let setUniqueLocation = [... new Set(locations)]
+    let setUniqueLocation = [... new Set(locations)];
 
 
 
@@ -107,6 +107,7 @@ exports.showJobs = async (req, res, next) => {
             page,
             pages: Math.ceil(count / pageSize),
             count,
+            setUniqueLocation
             
         })
         
