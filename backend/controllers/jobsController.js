@@ -70,6 +70,9 @@ exports.showJobs = async (req, res, next) => {
     //filter jobs by category
     let ids = [];
     const jobTypeCategory = await JobType .find({}, {_id:1}); //we want to have only ids
+    jobTypeCategory.forEach(cat =>{
+        ids.push(cat._id);
+    })
 
 
 
@@ -90,7 +93,7 @@ exports.showJobs = async (req, res, next) => {
             page,
             pages: Math.ceil(count / pageSize),
             count,
-            jobTypeCategory
+            ids
         })
         
     } catch (error) {
