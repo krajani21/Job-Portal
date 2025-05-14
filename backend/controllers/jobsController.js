@@ -88,6 +88,8 @@ exports.showJobs = async (req, res, next) => {
     });
     //display only unique locations
     let setUniqueLocation = [... new Set(locations)];
+    let location = req.query.location;
+    let locationFiler = location !== "" ? location : setUniqueLocation
 
 
 
@@ -96,11 +98,11 @@ exports.showJobs = async (req, res, next) => {
     const pageSize = 5;
     const page = Number(req.query.pageNumber) || 1;
     //const count = await Job.find({}).estimatedDocumentCount();
-    const count = await Job.find({...keyword, jobType: categ}).countDocuments();
+    const count = await Job.find({...keyword, jobType: categ, location: locationFiler}).countDocuments();
 
 
     try {
-        const jobs = await Job.find({...keyword, jobType: categ}).skip(pageSize * (page - 1)).limit(pageSize);
+        const jobs = await Job.find({...keyword, jobType: categ, location: locationFiler}).skip(pageSize * (page - 1)).limit(pageSize);
         res.status(200).json({
             success: true,
             jobs,
