@@ -63,7 +63,7 @@ exports.showJobs = async (req, res, next) => {
     const count = await Job.find({}).estimatedDocumentCount();
 
     try {
-        const jobs = await Job.find();
+        const jobs = await Job.find().skip(pageSize * (page - 1)).limit(pageSize);
         res.status(200).json({
             success: true,
             jobs,
