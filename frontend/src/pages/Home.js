@@ -3,13 +3,14 @@ import Navbar from '../component/NavBar';
 import Header from '../component/Header';
 import { Box, Card, Container, Stack, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { jobLoadAction } from '../redux/actions/jobActions';
 import {useParams} from "react-router-dom";
 
 
 
 const Home = () =>{
+    const {jobs, setUniqueLocation, pages, loading} = useSelector(state=>state.loadJobs);
     const {palette} = useTheme();
     const dispatch = useDispatch();
     const {keyword, location} = useParams();
@@ -45,6 +46,11 @@ const Home = () =>{
 
                     </Box>
                     <Box sx={{flex:5, p:2}}>
+                        {
+                            jobs && jobs.map(job => (
+                                <h1>{job.title}</h1>
+                            ))
+                        }
 
                     </Box>
 
