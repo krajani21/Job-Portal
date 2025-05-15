@@ -1,6 +1,6 @@
 import { Box, styled } from "@mui/material";
 import React from "react";
-
+import SearchInputEl from "./searchInput";
 const StyledHeader = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
@@ -16,6 +16,7 @@ const StyledHeader = styled(Box)(({ theme }) => ({
 const Header = () => {
   return (
     <StyledHeader>
+      <SearchInputEl/>
         
     </StyledHeader>
   );
