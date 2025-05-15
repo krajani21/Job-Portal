@@ -1,4 +1,5 @@
 const JobType = require("../models/jobTypeModel");
+const errorResponse = require("../utils/errorResponse");
 const ErrorResponse = require("../utils/errorResponse");
 
 //create a job category
@@ -46,6 +47,21 @@ exports.updateJobType = async (req, res, next) => {
         
     } catch (error) {
         next(error);
+        
+    }
+}
+
+//delete job type
+exports.deleteJobType = async (req, res, next) => {
+    try {
+        const jobT = await JobType.findByIdAndDelete(req.params.type_id);
+        res.status(200).json({
+            success: true,
+            message: "Job type deleted"
+        })
+        
+    } catch (error) {
+        next(new errorResponse("server error", 500));
         
     }
 }
