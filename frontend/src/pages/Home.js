@@ -8,6 +8,7 @@ import { jobLoadAction } from '../redux/actions/jobActions';
 import {useParams} from "react-router-dom";
 import CardElement from '../component/cardElement';
 import Footer from '../component/Footer';
+import LoadingBox from '../component/loadingBox';
 
 
 
@@ -49,6 +50,24 @@ const Home = () =>{
                     </Box>
                     <Box sx={{flex:5, p:2}}>
                         {
+                            loading ? 
+                            <LoadingBox/> :
+                            jobs && jobs.length === 0 ? 
+                                        <>
+                                            <Box
+                                                sx={{
+                                                    minHeight: '350px',
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center'
+                                                }}>
+
+                                                <h2>No result found!</h2>
+                                            </Box>
+                                        </> :
+
+
+
                             jobs && jobs.map((job,i) => (
                                 <CardElement
                                     key={i}
