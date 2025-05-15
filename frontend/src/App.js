@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/login';
 import UserDashboard from './pages/user/userDashboard';
+import UserRoute from './component/userRoute';
 
 const App = () => {
   return(
@@ -22,7 +23,7 @@ const App = () => {
             <Route path = "/search/location/:location" element = {<Home/>}/>
             <Route path = "/search/:keyword" element = {<Home/>}/>
             <Route path = "/login" element = {<Login/>}/>
-            <Route path = "/user/dashboard" element = {<UserDashboard/>}/>
+            <Route path = "/user/dashboard" element = {<UserRoute><UserDashboard/></UserRoute>} />
             <Route path = "*" element = {<NotFound/>}/>
 
           </Routes>
