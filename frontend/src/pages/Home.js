@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../component/NavBar';
 import Header from '../component/Header';
 import { Box, Card, Container, Stack, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
+import {useDispatch} from "react-redux";
+import { jobLoadAction } from '../redux/actions/jobActions';
+import {useParams} from "react-router-dom";
+
+
 
 const Home = () =>{
     const {palette} = useTheme();
+    const dispatch = useDispatch();
+    const {keyword, location} = useParams();
+
+
+    const [page, setPage] = useState(1);
+    const [cat, setCat] = React.useState("");
+
+    useEffect(() =>{
+        dispatch(jobLoadAction(page, keyword, cat, location))
+
+    }, [page, keyword, cat, location])
+
 
     return(
         <>
