@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { jobLoadAction } from '../redux/actions/jobActions';
 import {useParams} from "react-router-dom";
 import CardElement from '../component/cardElement';
+import Footer from '../component/Footer';
 
 
 
@@ -70,6 +71,7 @@ const Home = () =>{
             </Container>
 
         </Box>
+        <Footer/>
         </>
     )
 }
