@@ -94,7 +94,8 @@ exports.createUserJobsHistory = async(req, res, next) => {
                 user: req.user._id
             }
 
-            currentUser.jobsHistory.push(addJobHistory)
+            currentUser.jobsHistory.push(addJobHistory);
+            await currentUser.save()
         }
 
 
@@ -102,7 +103,7 @@ exports.createUserJobsHistory = async(req, res, next) => {
 
         res.status(200).json({
             success: true,
-            message: "User deleted successfully"
+            currentUser
         })
         
     } catch (error) {
