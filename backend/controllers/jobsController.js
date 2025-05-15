@@ -99,6 +99,7 @@ exports.showJobs = async (req, res, next) => {
     try {
         const count = await Job.find(filter).countDocuments();
         const jobs = await Job.find(filter)
+            .sort({createdAt: -1})
             .skip(pageSize * (page - 1))
             .limit(pageSize);
 
