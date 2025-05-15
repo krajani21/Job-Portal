@@ -1,3 +1,5 @@
+import { JOB_TYPE_LOAD_REQUEST, JOB_TYPE_LOAD_SUCCESS, JOB_TYPE_LOAD_FAIL, JOB_TYPE_LOAD_RESET } from "../constants/jobTypeConstant"
+
 export const loadJobTypeReducer = (state={jobType:[]}, action) => {
     switch (action.type) {
         case JOB_TYPE_LOAD_REQUEST:
