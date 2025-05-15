@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../component/NavBar';
 import Header from '../component/Header';
-import { Box, Card, Container, Stack, Typography } from '@mui/material';
+import { Box, Card, Container, Pagination, Stack, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import {useDispatch, useSelector} from "react-redux";
 import { jobLoadAction } from '../redux/actions/jobActions';
@@ -59,6 +59,9 @@ const Home = () =>{
                                 />
                             ))
                         }
+                        <Stack>
+                            <Pagination page={page} count={pages === 0 ? 1 : pages} onChange={(event, value) => setPage(value)} />
+                        </Stack>
 
                     </Box>
 
