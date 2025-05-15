@@ -6,6 +6,7 @@ import { useTheme } from '@emotion/react';
 import {useDispatch, useSelector} from "react-redux";
 import { jobLoadAction } from '../redux/actions/jobActions';
 import {useParams} from "react-router-dom";
+import CardElement from '../component/cardElement';
 
 
 
@@ -47,8 +48,15 @@ const Home = () =>{
                     </Box>
                     <Box sx={{flex:5, p:2}}>
                         {
-                            jobs && jobs.map(job => (
-                                <h1>{job.title}</h1>
+                            jobs && jobs.map((job,i) => (
+                                <CardElement
+                                    key={i}
+                                    id={job._id}
+                                    jobTitle={job.title}
+                                    description={job.description}
+                                    category={job.jobType ? job.jobType.jobTypeName : "No category"}
+                                    location={job.location}
+                                />
                             ))
                         }
 
