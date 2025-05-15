@@ -1,0 +1,7 @@
+export const USER_LOAD_REQUEST = "USER_LOAD_REQUEST";
+export const USER_LOAD_SUCCESS = "USER_LOAD_SUCCESS";
+export const USER_LOAD_FAIL = "USER_LOAD_FAIL";
+export const USER_LOAD_RESET = "USER_LOAD_RESET";
+
+
+
