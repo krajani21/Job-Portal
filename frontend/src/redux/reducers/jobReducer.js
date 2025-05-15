@@ -28,7 +28,6 @@ export const loadJobReducer = (state={jobs:[]}, action) => {
     
         default:
             return state
-            break;
     }
 
 }
