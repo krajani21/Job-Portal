@@ -5,7 +5,7 @@ import { loadJobReducer } from "./reducers/jobReducer";
 import { loadJobTypeReducer } from "./reducers/jobTypeReducer";
 const reducer = combineReducers({
   loadJobs: loadJobReducer,
-  jobType: loadJobTypeReducer,
+  jobTypeAll: loadJobTypeReducer,
 });
 
 const initialState = {};
