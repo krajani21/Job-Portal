@@ -39,7 +39,7 @@ app.use(cors());
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", jobTypeRoute);
-app.use("/api", jobRoute);
+app.use("/api/jobs", jobRoute);
 
 
 
