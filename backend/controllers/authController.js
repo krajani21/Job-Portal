@@ -62,8 +62,7 @@ const sendTokenResponse = async(user, statusCode, res) => {
     .cookie("token", token, {maxAge: ONE_HOUR, httpOnly: true})//cookie expires in 1 hour
     .json({
         success: true,
-        token,
-        user
+        role:user.role
     })
 }
 
