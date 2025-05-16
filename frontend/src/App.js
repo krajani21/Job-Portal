@@ -11,10 +11,13 @@ import Login from './pages/login';
 import UserDashboard from './pages/user/userDashboard';
 import UserRoute from './component/userRoute';
 import Layout from './pages/global/Layout';
+import UserJobsHistory from './pages/user/UserJobsHistory';
+
+
 
 //high order component
 const UserDashboardHOC = Layout(UserDashboard);
-
+const UserJobsHistoryHOC = Layout(UserJobsHistory);
 
 
 
@@ -32,6 +35,7 @@ const App = () => {
             <Route path = "/search/:keyword" element = {<Home/>}/>
             <Route path = "/login" element = {<Login/>}/>
             <Route path = "/user/dashboard" element = {<UserRoute><UserDashboardHOC/></UserRoute>} />
+            <Route path = "/user/jobs" element = {<UserRoute><UserJobsHistoryHOC/></UserRoute>} />
             <Route path = "*" element = {<NotFound/>}/>
 
           </Routes>

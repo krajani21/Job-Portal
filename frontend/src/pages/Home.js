@@ -6,7 +6,7 @@ import { useTheme } from '@emotion/react';
 import {useDispatch, useSelector} from "react-redux";
 import { jobLoadAction } from '../redux/actions/jobActions';
 import {useParams} from "react-router-dom";
-import CardElement from '../component/cardElement';
+import CardElement from '../component/CardElement';
 import Footer from '../component/Footer';
 import LoadingBox from '../component/loadingBox';
 import SelectComponent from '../component/selectComponent';
