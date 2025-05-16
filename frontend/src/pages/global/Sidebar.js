@@ -77,7 +77,7 @@ const SidebarAdm = () => {
                             }}
 
                         >
-                            {
+                            {//if user info exist, and role is 1 meaning admin, show admin menu
                                 userInfo && userInfo.role === 1 ?
                                     <>
                                         <MenuItem component={<Link to="/admin/dashboard" />} icon={<DashboardIcon />}> Dashboard </MenuItem>
@@ -85,6 +85,7 @@ const SidebarAdm = () => {
                                         <MenuItem component={<Link to="/admin/jobs" />} icon={<WorkIcon />}> Jobs </MenuItem>
                                         <MenuItem component={<Link to="/admin/category" />} icon={<CategoryIcon />}> Category </MenuItem>
                                     </> :
+                                    //else show user menu
                                     <>
                                         <MenuItem component={<Link to="/user/dashboard" />} icon={<DashboardIcon />}> Dashboard </MenuItem>
                                         <MenuItem component={<Link to="/user/jobs" />} icon={<WorkHistoryIcon />}> Applied Jobs </MenuItem>
