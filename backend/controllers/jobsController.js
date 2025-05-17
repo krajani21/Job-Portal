@@ -107,6 +107,3 @@ exports.showJobs = async (req, res, next) => {
     }
 }
 
-
-
-
