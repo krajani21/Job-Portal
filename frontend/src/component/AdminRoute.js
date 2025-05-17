@@ -1,11 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 const AdminRoute = ({children}) => {
-    const {user} = useSelector((state) => state.user);
+    const {userInfo} = useSelector((state) => state.signIn);
+    return userInfo && userInfo.role === 1 ? children : <Navigate to = "/" />
 
-    //role should be 1 to indicate admin
-    return user?.role === 1 ? children : <Navigate to = "/" />
     
 }
 
