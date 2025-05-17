@@ -16,14 +16,14 @@ import UserInfoDashboard from './pages/user/UserInfoDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminRoute from './component/AdminRoute';
 import SingleJob from './pages/user/SingleJob';
-
+import DashUsers from './pages/admin/DashUsers';
 
 //high order component
 const UserDashboardHOC = Layout(UserDashboard);
 const UserJobsHistoryHOC = Layout(UserJobsHistory);
 const UserInfoDashboardHOC = Layout(UserInfoDashboard);
 const AdminDashboardHOC = Layout(AdminDashboard);
-
+const DashUsersHOC = Layout(DashUsers);
 const App = () => {
   return(
     <>
@@ -39,6 +39,7 @@ const App = () => {
             <Route path = "/login" element = {<Login/>}/>
             <Route path = "/job/:id" element = {<SingleJob/>}/>
             <Route path = "/admin/dashboard" element = {<AdminRoute><AdminDashboardHOC/></AdminRoute>} />
+            <Route path = "/admin/users" element = {<AdminRoute><DashUsersHOC/></AdminRoute>} />
             <Route path = "/user/dashboard" element = {<UserRoute><UserDashboardHOC/></UserRoute>} />
             <Route path = "/user/jobs" element = {<UserRoute><UserJobsHistoryHOC/></UserRoute>} />
             <Route path = "/user/info" element = {<UserRoute><UserInfoDashboardHOC/></UserRoute>} />
