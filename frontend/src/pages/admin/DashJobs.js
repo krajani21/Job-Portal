@@ -4,7 +4,7 @@ import { DataGrid, gridClasses } from '@mui/x-data-grid';
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
-import { jobLoadAction } from '../../redux/actions/jobAction';
+import { jobLoadAction } from '../../redux/actions/jobActions';
 
 
 
