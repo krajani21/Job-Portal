@@ -80,7 +80,7 @@ const DashUsers = () => {
                     <Button variant='contained' color="success" startIcon={<AddIcon />}> Create user</Button>
                 </Box>
                 <Paper sx={{ bgcolor: "secondary.midNightBlue" }} >
-
+                    {/* box is used to grab ID of the user */}
                     <Box sx={{ height: 400, width: '100%' }}>
                         <DataGrid
                             sx={{
