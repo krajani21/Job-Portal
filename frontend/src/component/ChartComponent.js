@@ -16,4 +16,4 @@ const ChartComponent = ({ children }) => {
     )
 }
 
-export default ChartComponent
+export default ChartComponent;
