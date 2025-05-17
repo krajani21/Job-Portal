@@ -15,6 +15,9 @@ import UserJobsHistory from './pages/user/UserJobsHistory';
 import UserInfoDashboard from './pages/user/UserInfoDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminRoute from './component/AdminRoute';
+import SingleJob from './pages/user/SingleJob';
+
+
 //high order component
 const UserDashboardHOC = Layout(UserDashboard);
 const UserJobsHistoryHOC = Layout(UserJobsHistory);
@@ -34,6 +37,7 @@ const App = () => {
             <Route path = "/search/location/:location" element = {<Home/>}/>
             <Route path = "/search/:keyword" element = {<Home/>}/>
             <Route path = "/login" element = {<Login/>}/>
+            <Route path = "/job/:id" element = {<SingleJob/>}/>
             <Route path = "/admin/dashboard" element = {<AdminRoute><AdminDashboardHOC/></AdminRoute>} />
             <Route path = "/user/dashboard" element = {<UserRoute><UserDashboardHOC/></UserRoute>} />
             <Route path = "/user/jobs" element = {<UserRoute><UserJobsHistoryHOC/></UserRoute>} />

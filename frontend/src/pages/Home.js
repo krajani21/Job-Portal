@@ -8,7 +8,7 @@ import { jobLoadAction } from '../redux/actions/jobActions';
 import {useParams} from "react-router-dom";
 import CardElement from '../component/CardElement';
 import Footer from '../component/Footer';
-import LoadingBox from '../component/loadingBox';
+import LoadingBox from '../component/LoadingBox';
 import SelectComponent from '../component/selectComponent';
 import { jobTypeLoadAction } from '../redux/actions/jobTypeAction';
 

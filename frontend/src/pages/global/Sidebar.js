@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import logoDashboard from '../../images/hr-project.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { userLogoutAction, userProfileAction } from '../../redux/actions/userAction';
+import { userLogoutAction, userProfileAction } from '../../redux/actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import LoginIcon from '@mui/icons-material/Login';
 
