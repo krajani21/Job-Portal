@@ -1,4 +1,4 @@
-const Job = require('../models/jobModel');
+const Job = require('../models/jobModels');
 const JobType = require('../models/jobTypeModel');
 const ErrorResponse = require('../utils/errorResponse');
 
