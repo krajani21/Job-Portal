@@ -180,11 +180,17 @@ const Navbar = () => {
 
                             {
                                 !userInfo ?
-
-                                    <MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/login">Log In</Link></Typography>
+                                    <MenuItem 
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            handleCloseUserMenu();
+                                            navigate('/login');
+                                        }}
+                                    >
+                                        <Typography textAlign="center" style={{ textDecoration: "none", color: palette.primary.main }}>
+                                            Log In
+                                        </Typography>
                                     </MenuItem> :
-
                                     <MenuItem onClick={logOutUser}>
                                         <Typography style={{ textDecoration: "none", color: palette.primary.main }} textAlign="center">Log Out</Typography>
                                     </MenuItem>
