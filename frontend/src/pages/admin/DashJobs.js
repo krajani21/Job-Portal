@@ -95,7 +95,8 @@ const DashJobs = () => {
             <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
                 Jobs list
             </Typography>
-            <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
+            <Box sx={{ pb: 2, display: "flex", justifyContent: "right", gap: 2 }}>
+                <Button variant='contained' color="primary" startIcon={<AddIcon />}> <Link style={{ color: "white", textDecoration: "none" }} to="/">Homepage</Link></Button>
                 <Button variant='contained' color="success" startIcon={<AddIcon />}> <Link style={{ color: "white", textDecoration: "none" }} to="/admin/job/create">Create Job</Link></Button>
             </Box>
             <Paper sx={{ bgcolor: "secondary.midNightBlue" }} >

@@ -76,7 +76,8 @@ const DashUsers = () => {
                 <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
                     All users
                 </Typography>
-                <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
+                <Box sx={{ pb: 2, display: "flex", justifyContent: "right", gap: 2 }}>
+                    <Button variant='contained' color="primary" startIcon={<AddIcon />}> <Link style={{ color: "white", textDecoration: "none" }} to="/">Homepage</Link></Button>
                     <Button variant='contained' color="success" startIcon={<AddIcon />}> Create user</Button>
                 </Box>
                 <Paper sx={{ bgcolor: "secondary.midNightBlue" }} >
