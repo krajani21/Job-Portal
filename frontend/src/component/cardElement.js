@@ -27,7 +27,7 @@ const CardElement = ({ jobTitle, description, category, location, id }) => {
                     {category}
                 </Typography>
                 <Typography variant="body2">
-                    Description: {description.split(" ").slice(0, 15).join(" ") + "..."}
+                    Description: {(description ? description.split(" ").slice(0, 15).join(" ") : "No description available") + "..."}
                 </Typography>
             </CardContent>
             <CardActions>
