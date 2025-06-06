@@ -66,6 +66,12 @@ const Home = () => {
                                         Filter job by location
                                     </Typography>
                                     <MenuList>
+                                        <MenuItem>
+                                            <ListItemIcon>
+                                                <LocationOnIcon sx={{ color: palette.secondary.main, fontSize: 18 }} />
+                                            </ListItemIcon>
+                                            <Link to="/">All Locations</Link>
+                                        </MenuItem>
                                         {
                                             setUniqueLocation && setUniqueLocation.map((location, i) => (
                                                 <MenuItem key={i}>
