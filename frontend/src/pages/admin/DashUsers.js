@@ -62,7 +62,7 @@ const DashUsers = () => {
             width: 200,
             renderCell: (values) => (
                 <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
-                    <Button variant="contained"><Link style={{ color: "white", textDecoration: "none" }} to={`/admin/edit/user/${values.row._id}`}>Edit</Link></ Button>
+                    <Button variant="contained"><Link style={{ color: "black", textDecoration: "none" }} to={`/admin/edit/user/${values.row._id}`}>Edit</Link></ Button>
                     < Button onClick={(e) => deleteUserById(e, values.row._id)} variant="contained" color="error">Delete</ Button>
                 </Box>
             )
@@ -73,11 +73,11 @@ const DashUsers = () => {
         <>
             <Box >
 
-                <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
+                <Typography variant="h4" sx={{ color: "black", pb: 3 }}>
                     All users
                 </Typography>
                 <Box sx={{ pb: 2, display: "flex", justifyContent: "right", gap: 2 }}>
-                    <Button variant='contained' color="primary" startIcon={<AddIcon />}> <Link style={{ color: "white", textDecoration: "none" }} to="/">Homepage</Link></Button>
+                    <Button variant='contained' color="primary" startIcon={<AddIcon />}> <Link style={{ color: "black", textDecoration: "none" }} to="/">Homepage</Link></Button>
                     <Button variant='contained' color="success" startIcon={<AddIcon />}> Create user</Button>
                 </Box>
                 <Paper sx={{ bgcolor: "secondary.midNightBlue" }} >
@@ -87,9 +87,9 @@ const DashUsers = () => {
                             sx={{
 
                                 '& .MuiTablePagination-displayedRows': {
-                                    color: 'white',
+                                    color: 'black',
                                 },
-                                color: 'white',
+                                color: 'black',
                                 [`& .${gridClasses.row}`]: {
                                     bgcolor: (theme) =>
                                         // theme.palette.mode === 'light' ? grey[200] : grey[900],
