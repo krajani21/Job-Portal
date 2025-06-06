@@ -14,7 +14,7 @@ const UserJobsHistory = () => {
             <Box>
                 <Typography variant="h4" sx={{ color: "#fafafa" }}> Jobs History</Typography>
                 <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
-                    <Button variant='contained' color="primary" startIcon={<AddIcon />}> <Link style={{ color: "white", textDecoration: "none" }} to="/">Homepage</Link></Button>
+                    <Button variant='contained' color="primary" startIcon={<AddIcon />}> <Link style={{ color: "black", textDecoration: "none" }} to="/">Homepage</Link></Button>
                 </Box>
                 <Box>
                     {
