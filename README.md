@@ -12,12 +12,12 @@
 https://github.com/user-attachments/assets/eb9572a9-5026-414b-8ea9-37e137d47b11
 
 
-## Regular user demo
+## Admin demo
 
 https://github.com/user-attachments/assets/3ed75ceb-2d93-464e-a81f-7af7736ce147
 
 
-## Admin demo
+## Regular user demo
 
 
 
