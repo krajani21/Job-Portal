@@ -1,5 +1,11 @@
 # Job-Portal
 
+## Tech stack
+- MongoDB- Database
+- Express- backend
+- Node- backend
+- React - frontend
+
 ## Location demo
 
 
