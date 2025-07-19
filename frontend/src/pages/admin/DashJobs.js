@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import { jobLoadAction } from '../../redux/actions/jobActions';
+import LoadingBox from '../../component/LoadingBox';
+import ErrorBoundary from '../../component/ErrorBoundary';
 
 
 
@@ -90,6 +92,10 @@ const DashJobs = () => {
 
 
     return (
+        <ErrorBoundary>
+        {loading ? (
+            <LoadingBox />
+        ) : (
         <Box >
 
             <Typography variant="h4" sx={{ color: "black", pb: 3 }}>
@@ -130,6 +136,8 @@ const DashJobs = () => {
             </Paper>
 
         </Box>
+        )}
+        </ErrorBoundary>
     )
 }
 
